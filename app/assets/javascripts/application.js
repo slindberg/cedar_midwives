@@ -12,4 +12,5 @@
 //
 //= require jquery
 //= require turbolinks
+//= require flowtype/flowtype.js
 //= require_tree .

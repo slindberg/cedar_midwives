@@ -14,3 +14,9 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+# Ignore bower components, they are managed with bower-rails
+# see https://github.com/42dev/bower-rails
+/vendor/assets/.bowerrc
+/vendor/assets/bower.json
+/vendor/assets/bower_components
