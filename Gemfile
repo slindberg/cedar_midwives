@@ -44,6 +44,13 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+# Live-reload support
+group :development do
+  gem 'guard', :require => false
+  gem 'guard-livereload', require: false
+  gem "rack-livereload"
+end
+
 # Comfortable Mexican Sofa CMS
 gem 'comfortable_mexican_sofa', '~> 1.11.0'
 
