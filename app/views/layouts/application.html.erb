@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>CedarMidwives</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Cedar Midwives <% if header = @cms_page.blocks.find_by(:identifier => 'header') %> - <%= header.content %><% end %></title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <link href='http://fonts.googleapis.com/css?family=Goudy+Bookletter+1911|Bad+Script' rel='stylesheet' type='text/css'>
 </head>
 <body>
 

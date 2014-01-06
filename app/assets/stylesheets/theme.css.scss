@@ -1,0 +1,248 @@
+$foreground-color: rgba(0,0,0,0.5);
+$background-color: rgb(248, 246, 239);
+$accent-color: #b42e27;
+$brand-accent-color: #3e7f40;
+$logo-color: #392313;
+
+$sans-font-family: "Trebuchet MS", "Gill Sans", Tahoma, sans-serif;
+$serif-font-family: 'Goudy Bookletter 1911', serif;
+$script-font-family: 'Bad Script', sans-serif;
+
+body {
+  color: $foreground-color;
+  background-color: $background-color;
+  font-family: $serif-font-family;
+}
+
+.logo {
+  z-index: 1002;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 150px;
+  height: 300px;
+  margin-left: 20px;
+
+  background: {
+    image: image-url("logo.png");
+    position: left 20px;
+    repeat: no-repeat;
+    size: 150px 280px;
+  }
+}
+
+#container {
+  position: relative;
+
+  margin: {
+    left: 200px;
+    right: 200px;
+    bottom: 50px;
+  }
+
+  &:before {
+    content: '';
+    position: fixed;
+    top: 0;
+    height: 65px;
+    width: 100%;
+    background-color: $background-color;
+    z-index: 999;
+  }
+}
+
+.persist:not(.animated) {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.brand.persist {
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 160px;
+  height: 70px;
+  margin: 0;
+  padding: 0;
+
+  font-size: 3em;
+
+  small {
+    display: none;
+  }
+}
+
+.brand {
+  height: 150px;
+  width: 530px;
+  margin-top: 65px;
+  padding-top: 35px;
+
+  font-size: 4.4em;
+  letter-spacing: 0.02em;
+  word-spacing: -0.2em;
+
+  color: $logo-color;
+
+  span {
+    color: $brand-accent-color;
+    letter-spacing: 0.08em;
+  }
+
+  small {
+    float: left;
+    margin-left: 21px;
+
+    font: {
+      family: $script-font-family;
+      size: 0.3em;
+      weight: 600;
+    }
+
+    letter-spacing: normal;
+    word-spacing: normal;
+
+    color: $accent-color;
+  }
+}
+
+.contact-info {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  margin-top: 15px;
+
+  font-family: $sans-font-family;
+
+  a {
+    color: $accent-color;
+    text-decoration: none;
+
+    &:hover {
+      color: darken($accent-color, 10%);
+    }
+  }
+
+  span:first-child:after {
+    content: ' / ';
+  }
+}
+
+nav {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  width: 100%;
+  margin-right: 20%;
+
+  border-bottom: {
+    style: solid;
+    color: $foreground-color;
+    width: 2px;
+  }
+
+  font-family: $sans-font-family;
+
+  ul {
+    float: right;
+    margin-right: 200px;
+    margin-bottom: 10px;
+
+    list-style-type: none;
+
+    li {
+      float: left;
+
+      &.active {
+        padding: 10px 10px;
+        border-color: $accent-color;
+        font-weight: 700;
+      }
+
+      a {
+        display: block;
+        padding: 10px 10px;
+        text-decoration: none;
+        color: $foreground-color;
+
+        &:hover {
+          color: $accent-color;
+        }
+      }
+    }
+  }
+
+  &:before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 44px;
+    height: 300px;
+    width: 92px;
+    background-color: $background-color;
+  }
+}
+
+#content {
+  font-size: 18px;
+  line-height: 26px;
+
+  h1, h2, h3, h4 {
+    font-weight: 300;
+    line-height: 1em;
+  }
+
+  h1 {
+    font-size: 2em;
+  }
+
+  h3 {
+    font-size: 2.5.5.5.5.5em;
+    font-weight: 700;
+  }
+
+  a {
+    color: $accent-color;
+    text-decoration: none;
+
+    &:hover {
+      color: darken($accent-color, 10%);
+    }
+  }
+
+  dl {
+    dt {
+      float: left;
+      width: 160px;
+      overflow: hidden;
+      clear: left;
+      text-align: right;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    dd {
+      margin-left: 180px;
+    }
+  }
+
+  img {
+    float: left;
+    margin: {
+      top: 5px;
+      right: 15px;
+      bottom: 10px;
+    }
+
+    border: {
+      style: solid;
+      width: 2px;
+      color: white;
+    }
+  }
+
+  .callout {
+    font-weight: 700;
+    text-align: center;
+  }
+}
