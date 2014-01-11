@@ -39,14 +39,19 @@ end
 # Use unicorn as the app server
 # gem 'unicorn'
 
-# Use Capistrano for deployment
-# gem 'capistrano', group: :development
-
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-# Live-reload support
 group :development do
+  # Use Capistrano for deployment
+  gem 'capistrano', '~> 3.0.1'
+  gem 'capistrano-rails', '~> 1.1.0'
+
+  # An issue with the current SSHKit gem on rubygems.org prevents deploy with --dry-run
+  # see: https://github.com/capistrano/sshkit/issues/39
+  gem 'sshkit', '~> 1.3.0', github: 'capistrano/sshkit'
+
+  # Live-reload support
   gem 'guard', :require => false
   gem 'guard-livereload', require: false
   gem "rack-livereload"
