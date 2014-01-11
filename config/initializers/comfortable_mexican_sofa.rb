@@ -1,5 +1,10 @@
 # encoding: utf-8
 
+CMS_CONFIG = YAML.load_file(Rails.root.join('config/comfortable_mexican_sofa.yml'))
+
+ComfortableMexicanSofa::HttpAuth.username = CMS_CONFIG['username']
+ComfortableMexicanSofa::HttpAuth.password = CMS_CONFIG['password']
+
 ComfortableMexicanSofa.configure do |config|
   # Title of the admin area
   #   config.cms_title = 'ComfortableMexicanSofa CMS Engine'
@@ -93,11 +98,6 @@ ComfortableMexicanSofa.configure do |config|
   #   config.reveal_cms_partials = false
 
 end
-
-# Default credentials for ComfortableMexicanSofa::HttpAuth
-# YOU REALLY WANT TO CHANGE THIS BEFORE PUTTING YOUR SITE LIVE
-ComfortableMexicanSofa::HttpAuth.username = ENV['CM_CMS_USERNAME']
-ComfortableMexicanSofa::HttpAuth.password = ENV['CM_CMS_PASSWORD']
 
 # You can use bcrypt (gem 'bcrypt-ruby') if you want to:
 #   require 'bcrypt'
