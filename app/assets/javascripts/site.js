@@ -3,6 +3,9 @@
 (function() {
   var lastIndex, currentIndex, nextIndex;
 
+  // Detect whether the device uses a touch screen
+  var isTouchDevice = 'ontouchstart' in document || 'onmsgesturechange' in document;
+
   // When a nav link is clicked, save the index of the link in the nav
   $(document).on('click', 'nav > ul > li', function() {
     nextIndex = $(this).index();
@@ -16,16 +19,19 @@
       fontRatio : 30,
     });
 
-    // Create a clone of every persistent element
-    $('.persistent').each(function() {
-      $clone = $(this).clone()
-      .removeClass('persistent')
-      .addClass('persist')
-      .prependTo('body');
+    // Don't create fixed position elements on touch devices
+    if (!isTouchDevice) {
+      // Create a clone of every persistent element
+      $('.persistent').each(function() {
+        $clone = $(this).clone()
+          .removeClass('persistent')
+          .addClass('persist')
+          .prependTo('body');
 
-      // Save a reference to the clone
-      $(this).data('clone', $clone.get(0));
-    });
+        // Save a reference to the clone
+        $(this).data('clone', $clone.get(0));
+      });
+    }
 
     // Set indexes based on the current page and the last page
     lastIndex = currentIndex;
@@ -39,30 +45,29 @@
   });
 
   $(document).on('page:fetch', function() {
-    // Attempt to correct for persistent logo funkiness when scrolled down
-    $('body').animate({ scrollTop: 0 }, 'fast');
-
     // Animate content out
     animate('#content', 'slide', 'out', currentIndex < nextIndex ? 'left' : 'right');
   });
 
-  // Fade in/out persistent elements and their clones
-  $(document).on('scroll', function() {
-    var scrollTop = $(document).scrollTop();
+  if (!isTouchDevice) {
+    // Fade in/out persistent elements and their clones
+    $(document).on('scroll', function() {
+      var scrollTop = $(document).scrollTop();
 
-    $('.persistent').each(function() {
-      var offset = $(this).offset();
-      var clone = $(this).data('clone');
+      $('.persistent').each(function() {
+        var offset = $(this).offset();
+        var clone = $(this).data('clone');
 
-      if (scrollTop > offset.top) {
-        animate(this, 'fade', 'out');
-        animate(clone, 'fade', 'in');
-      } else {
-        animate(this, 'fade', 'in');
-        animate(clone, 'fade', 'out');
-      }
+        if (scrollTop > offset.top) {
+          animate(this, 'fade', 'out');
+          animate(clone, 'fade', 'in');
+        } else {
+          animate(this, 'fade', 'in');
+          animate(clone, 'fade', 'out');
+        }
+      });
     });
-  });
+  }
 
   // Add CSS classes that trigger animations
   function animate(element, type, direction, side) {
