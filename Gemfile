@@ -62,3 +62,6 @@ gem 'comfortable_mexican_sofa', '~> 1.11.0'
 
 # Bower package manager support
 gem "bower-rails", "~> 0.6.1"
+
+# Provides google webfonts helpers
+gem 'google-webfonts'
