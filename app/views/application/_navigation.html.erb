@@ -1,8 +1,0 @@
-<nav>
-  <ul>
-    <%- @cms_site.pages.published.includes(:categories).where(:cms_categories => { :label => 'In Navigation' }).each do |page| -%>
-      <%- active = request.original_fullpath == page.full_path -%>
-      <li <% if active %>class="active"<% end %>><%= link_to_unless active, page.label, page.full_path %></li>
-    <%- end -%>
-  </ul>
-</nav>
