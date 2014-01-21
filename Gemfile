@@ -58,7 +58,8 @@ group :development do
 end
 
 # Comfortable Mexican Sofa CMS
-gem 'comfortable_mexican_sofa', '~> 1.11.0'
+# gem 'comfortable_mexican_sofa', '~> 1.11.0'
+gem 'comfortable_mexican_sofa', github: 'slindberg/comfortable-mexican-sofa', :branch => 'issue/default-json-response'
 
 # Bower package manager support
 gem "bower-rails", "~> 0.6.1"
