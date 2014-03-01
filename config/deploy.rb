@@ -7,7 +7,7 @@ set :home_dir, "/home/#{fetch(:user)}"
 
 # Repository/branch to deploy from
 set :repo_url, 'git@github.com:slindberg/cedar_midwives.git'
-set :branch, 'master'
+set :branch, 'private'
 
 # Hosting-specific deploy paths
 set :deploy_to, "#{fetch(:home_dir)}/webapps/#{fetch(:application)}"
