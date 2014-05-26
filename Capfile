@@ -27,5 +27,9 @@ namespace :deploy do
     end
   end
 
+  # Run `restart` task explicitly, as > 3.1 no longer does by default
+  # see: http://stackoverflow.com/questions/22021020/capistrano-3-does-not-restart-after-deploy
+  after 'deploy:publishing', 'deploy:restart'
+
   after :finishing, 'deploy:cleanup'
 end
