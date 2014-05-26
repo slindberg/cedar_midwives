@@ -18,7 +18,7 @@ class UpgradeCmsTo1120 < ActiveRecord::Migration
     rename_table :cms_snippets,         :comfy_cms_snippets
     rename_table :cms_files,            :comfy_cms_files
     rename_index :cms_revisions,
-      'index_cms_revisions_on_record_type_and_record_id_and_created_at',
+      'index_cms_revisions_on_rtype_and_rid_and_created_at',
       'index_cms_revisions_on_record_type_id_created'
     rename_table :cms_revisions,        :comfy_cms_revisions
     rename_index :cms_categories,
