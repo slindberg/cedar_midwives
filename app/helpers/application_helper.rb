@@ -3,7 +3,7 @@ module ApplicationHelper
     pages = @cms_site.pages.published
 
     if label
-      pages = pages.includes(:categories).where({ cms_categories: { label: label } })
+      pages = pages.includes(:categories).where({ comfy_cms_categories: { label: label } })
     end
 
     content_tag :ul do
