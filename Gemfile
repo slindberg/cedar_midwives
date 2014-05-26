@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.3'
+gem 'rails', '4.0.5'
 
 # Use sqlite3 in development, postgresql in production
 gem 'sqlite3', group: :development
@@ -44,12 +44,8 @@ end
 
 group :development do
   # Use Capistrano for deployment
-  gem 'capistrano', '~> 3.0.1'
+  gem 'capistrano', '~> 3.2.0'
   gem 'capistrano-rails', '~> 1.1.0'
-
-  # An issue with the current SSHKit gem on rubygems.org prevents deploy with --dry-run
-  # see: https://github.com/capistrano/sshkit/issues/39
-  gem 'sshkit', '~> 1.3.0', github: 'capistrano/sshkit'
 
   # Live-reload support
   gem 'guard', :require => false
