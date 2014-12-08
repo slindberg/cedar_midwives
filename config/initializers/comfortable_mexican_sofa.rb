@@ -2,8 +2,8 @@
 
 CMS_CONFIG = YAML.load_file(Rails.root.join('config/comfortable_mexican_sofa.yml'))
 
-ComfortableMexicanSofa::HttpAuth.username = CMS_CONFIG['username']
-ComfortableMexicanSofa::HttpAuth.password = CMS_CONFIG['password']
+ComfortableMexicanSofa::AccessControl::AdminAuthentication.username = CMS_CONFIG['username']
+ComfortableMexicanSofa::AccessControl::AdminAuthentication.password = CMS_CONFIG['password']
 
 ComfortableMexicanSofa.configure do |config|
   # Title of the admin area
