@@ -1,0 +1,6 @@
+ga_tag: //www.google-analytics.com/analytics.js
+ga_tracker: UA-XXXXXXX-XX
+
+pa_tag: //tag.perfectaudience.com/serve/XXXXXXXXXXXXXXXXXXXXXXXX.js
+pa_event: track
+pa_tracker: XXXX-XXXXXXX

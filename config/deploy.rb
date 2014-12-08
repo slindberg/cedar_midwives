@@ -20,7 +20,7 @@ set :default_env, {
 }
 
 # Files/dirs that live in shared/ and are symlinked in
-set :linked_files, %w{config/database.yml config/comfortable_mexican_sofa.yml}
+set :linked_files, %w{config/database.yml config/analytics.yml config/comfortable_mexican_sofa.yml}
 set :linked_dirs, %w{bin log tmp/cache public/system}
 
 # Debug logging too verbose when all goes well

@@ -1,0 +1,18 @@
+<% if Rails.env.production? %>
+  <script>
+    (function(global, document, namespace) {
+      var ga = global[namespace] = function() { ga.q.push(arguments); }
+      ga.q = [];
+      ga.l = new Date().getTime();
+      global.GoogleAnalyticsObject = namespace;
+    })(window, document, 'ga');
+    ga('create', '<%= Rails.application.config.analytics['ga_tracker'] %>', 'cedarmidwives.com');
+  </script>
+  <script src="<%= Rails.application.config.analytics['ga_tag'] %>" async></script>
+
+  <script>
+    window._pq = window._pq || [];
+    _pq.push(['<%= Rails.application.config.analytics['pa_event'] %>', '<%= Rails.application.config.analytics['pa_tracker'] %>']);
+  </script>
+  <script src="<%= Rails.application.config.analytics['pa_tag'] %>" async></script>
+<% end %>

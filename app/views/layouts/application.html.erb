@@ -10,8 +10,10 @@
     <%= stylesheet_link_tag "application", media: "all" %>
     <%= google_webfonts_link_tag "PT Sans Narrow", "Goudy Bookletter 1911", "Italianno" %>
     <%= javascript_include_tag "application" %>
+    <%= render "shared/analytics_include" %>
   </head>
   <body class="<%= @cms_page.slug or 'home' %>">
     <%= yield %>
+    <%= render "shared/analytics_page" %>
   </body>
 </html>
