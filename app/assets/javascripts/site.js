@@ -6,33 +6,19 @@
   // Detect whether the device uses a touch screen
   var isTouchDevice = 'ontouchstart' in document || 'onmsgesturechange' in document;
 
+  // Enable the responsive nave on touch devices
+  if (isTouchDevice) {
+    $(document).on('touchend', '.menu', function() {
+      $('nav').toggleClass('open');
+    });
+  }
+
   // When a nav link is clicked, save the index of the link in the nav
   $(document).on('click', 'nav > ul > li', function() {
     nextIndex = $(this).index();
   });
 
   $(document).on('page:change', function() {
-    // Initialize FlowType.JS
-    $('#content').flowtype({
-      minFont   : 12,
-      maxFont   : 24,
-      fontRatio : 30,
-    });
-
-    // Don't create fixed position elements on touch devices
-    if (!isTouchDevice) {
-      // Create a clone of every persistent element
-      $('.persistent').each(function() {
-        $clone = $(this).clone()
-          .removeClass('persistent')
-          .addClass('persist')
-          .prependTo('body');
-
-        // Save a reference to the clone
-        $(this).data('clone', $clone.get(0));
-      });
-    }
-
     // Set indexes based on the current page and the last page
     lastIndex = currentIndex;
     currentIndex = $('nav ul > li.active').index();
@@ -40,38 +26,33 @@
 
     // Animate the content in if it's not a fresh page load
     if (lastIndex != null) {
-      animate('#content', 'slide', 'in', currentIndex < lastIndex ? 'left' : 'right');
+      animate('.content', 'slide', 'in', currentIndex < lastIndex ? 'left' : 'right');
     }
   });
 
   $(document).on('page:fetch', function() {
     // Animate content out
-    animate('#content', 'slide', 'out', currentIndex < nextIndex ? 'left' : 'right');
+    animate('.transition', 'slide', 'out', currentIndex < nextIndex ? 'left' : 'right');
   });
 
   if (!isTouchDevice) {
     // Fade in/out persistent elements and their clones
     $(document).on('scroll', function() {
       var scrollTop = $(document).scrollTop();
+      var $el = $('.persistent');
+      var cutoff = $el.offset().top + $el.height() / 2;
 
-      $('.persistent').each(function() {
-        var offset = $(this).offset();
-        var clone = $(this).data('clone');
-
-        if (scrollTop > offset.top) {
-          animate(this, 'fade', 'out');
-          animate(clone, 'fade', 'in');
-        } else {
-          animate(this, 'fade', 'in');
-          animate(clone, 'fade', 'out');
-        }
-      });
+      if (scrollTop > cutoff) {
+        animate('.persist', 'fade', 'in');
+      } else {
+        animate('.persist', 'fade', 'out');
+      }
     });
   }
 
   // Add CSS classes that trigger animations
-  function animate(element, type, direction, side) {
-    var $el = $(element);
+  function animate(selector, type, direction, side) {
+    var $el = $(selector);
     var visibility = $el.css('visibility');
 
     // Don't trigger animations that will have no effect
