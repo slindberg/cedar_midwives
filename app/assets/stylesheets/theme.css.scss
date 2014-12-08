@@ -40,7 +40,7 @@ $large-width: 1230px; // large desktops
     opacity: 0.06;
     content: '';
     background: {
-      image: url("logo.png");
+      image: image-url("logo.png");
       repeat: no-repeat;
       size: $size;
       clip: content-box;
